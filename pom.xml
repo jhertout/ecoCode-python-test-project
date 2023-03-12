@@ -14,6 +14,7 @@
 
         <!-- Obligatoire pour prise en compte des fichiers PYTHON -->
         <sonar.sources>.</sonar.sources>
+        <sonar.python.version>3</sonar.python.version>
 
     </properties>
 

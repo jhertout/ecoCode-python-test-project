@@ -11,10 +11,10 @@
 
     <properties>
         <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-        <!-- Obligatoire pour prise en compte des fichiers PYTHON -->
-        <sonar.sources>.</sonar.sources>
-        <sonar.python.version>3</sonar.python.version>
+        <sonar.sources>src</sonar.sources>
 
     </properties>
 

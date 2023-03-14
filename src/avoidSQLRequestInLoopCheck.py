@@ -23,9 +23,9 @@ class AvoidSQLRequestInLoopCheck:
             db = mysql.connector.connect(option_files='my.conf', use_pure=True)
             cursor = db.cursor(dictionary=True)
 
-            for i in range(0, self.maxrows):
-                cursor.execute("SELECT id, name FROM users WHERE id = %(id)s", {'id': i+1}) #Noncompliant
-                for row in cursor.fetchall():
+            for i in range(0, self.maxrows): # Noncompliant {{Do not call a function when declaring a for-type loop}}
+                cursor.execute("SELECT id, name FROM users WHERE id = %(id)s", {'id': i+1})
+                for row in cursor.fetchall(): # Noncompliant {{Do not call a function when declaring a for-type loop}}
                     print("{}: {}".format(row['id'], row['name']))
 
             cursor.close()
@@ -41,8 +41,8 @@ class AvoidSQLRequestInLoopCheck:
 
             i = 0
             while i < self.maxrows:
-                cursor.execute("SELECT id, name FROM users WHERE id = %(id)s", {'id': i+1}) #Noncompliant
-                for row in cursor.fetchall():
+                cursor.execute("SELECT id, name FROM users WHERE id = %(id)s", {'id': i+1})
+                for row in cursor.fetchall(): # Noncompliant {{Do not call a function when declaring a for-type loop}}
                     print("name: {}".format(row['name']))
                 i += 1
 
